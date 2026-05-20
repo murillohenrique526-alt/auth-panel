@@ -144,4 +144,5 @@ app.post("/me", (req, res) => {
 // ======================
 app.listen(PORT, () => {
   console.log("COMPANHIA SHELBY ONLINE NA PORTA " + PORT);
-});
+});app. get('/', (req, res) => { res. send('Painel de Autenticação
+Funcionando!'); 3);
