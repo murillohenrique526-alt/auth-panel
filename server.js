@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const crypto = require("crypto");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
@@ -8,12 +9,19 @@ app.use(express.static("public"));
 
 const PORT = process.env.PORT || 3000;
 
-// ======================
+// =======================
 // DB FUNCTIONS
-// ======================
+// =======================
+
 function getDB() {
-  return JSON.parse(fs.readFileSync("./db.json"));
+    return JSON.parse(fs.readFileSync(path.join(__dirname, "db.json"), "utf-8"));
 }
+
+function saveDB(db) {
+    fs.writeFileSync(path.join(__dirname, "db.json"), JSON.stringify(db, null, 2));
+}
+
+// O restante do seu código continua aqui...
 
 function saveDB(db) {
   fs.writeFileSync("./db.json", JSON.stringify(db, null, 2));
